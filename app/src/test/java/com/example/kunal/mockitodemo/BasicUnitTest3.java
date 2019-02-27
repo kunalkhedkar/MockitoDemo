@@ -25,7 +25,7 @@ public class BasicUnitTest3 {
         // want to test areaCalculator.area() method
         AreaCalculator areaCalculator = new AreaCalculator();
 
-        // test
+        // assert
         assertEquals(50, areaCalculator.area(mockRectangle));
 
     }

@@ -12,33 +12,33 @@ public class BasicUnitTest {
      * Very basic test to check calculator add method without mockito
      */
     @Test
-    public void testAddition(){
+    public void testAddition() {
         Calculator calculator = new Calculator();
-        assertEquals(10,calculator.add(3,7));
+        assertEquals(10, calculator.add(3, 7));
     }
 
 
-
     /**
-     *                  USING MOCKITO
-     *
-     *             when - we specify which behaviour we want to mock
-     *
-     *       thenReturn - we specify what value should return
+     * USING MOCKITO
+     * <p>
+     * when - we specify which behaviour we want to mock
+     * <p>
+     * thenReturn - we specify what value should return
      */
 
 
     @Test
-    public void testAdditionWithMockito(){
+    public void testAdditionWithMockito() {
 
         // Create mock object of calculator class
         Calculator mockCalculator = Mockito.mock(Calculator.class);
 
         // specifying mock behaviour
-        when(mockCalculator.add(3,7)).thenReturn(10);
+        when(mockCalculator.add(3, 7))
+                .thenReturn(10);
 
-        //test
-        assertEquals(10,mockCalculator.add(3,7));
+        //assert
+        assertEquals(10, mockCalculator.add(3, 7));
 
     }
 }

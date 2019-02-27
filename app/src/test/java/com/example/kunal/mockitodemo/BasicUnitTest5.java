@@ -27,7 +27,7 @@ public class BasicUnitTest5 {
     /**
      *      Matcher :
      *      Matchers are like regex or wildcards where instead of a specific input (and or output),
-     *      you specify a range/type of input/output based on which calls to methods can be verified.
+     *      you specify a range/type of input/output based on which methods calls can be verified.
      *
      *
      *      There are mainly 2 types of matchers in Mockito
@@ -43,55 +43,54 @@ public class BasicUnitTest5 {
 
 
     /**
-     *      1.  Argument Matchers
+     * 1.  Argument Matchers
      */
 
     // 1.   any() – Accepts any object (including null).
     @Test
-    public void testAdditionUsingAnyMatcher1(){
+    public void testAdditionUsingAnyMatcher1() {
 
-        when(mockCalculator.multi(any(),any())).thenReturn(7);
+        when(mockCalculator.multi(any(), any())).thenReturn(7);
 
 //        assertEquals(40,mockCalculator.multi(2,20));    // fail
-        assertEquals(7,mockCalculator.multi(2,20));
+        assertEquals(7, mockCalculator.multi(2, 20));
 
     }
 
     // 2.   any(java language class)
     @Test
-    public void testAdditionUsingAnyMatcher2(){
+    public void testAdditionUsingAnyMatcher2() {
 
         when(mockAreaCalculator.area(any(Rectangle.class))).thenReturn(500);
 
-        Rectangle rectangle = new Rectangle(2,2);
+        Rectangle rectangle = new Rectangle(2, 2);
 
-        assertEquals(500,mockAreaCalculator.area(rectangle));
+        assertEquals(500, mockAreaCalculator.area(rectangle));
 
     }
 
     // 3.   anyBoolean(), anyByte(), anyInt(), anyString(), anyDouble(), anyFloat(), anyList()
     @Test
-    public void testAdditionUsingAnyMatcher3(){
+    public void testAdditionUsingAnyMatcher3() {
 
-        when(mockCalculator.add(anyInt(),anyInt())).thenReturn(7);
+        when(mockCalculator.add(anyInt(), anyInt())).thenReturn(7);
 
-        assertEquals(7,mockCalculator.add(500,500));
+        assertEquals(7, mockCalculator.add(500, 500));
 
     }
 
 
-
     /**
-     *      2.  Verification Matchers
-     *
-     *          There are some specialized matchers that are available to expect/assert things
-     *          like numbers of invocations on the mock.
+     * 2.  Verification Matchers
+     * <p>
+     * There are some specialized matchers that are available to expect/assert things
+     * like numbers of invocations on the mock.
      */
 
 
     // 1. Simple invocation on Mock verifies whether the mocked method was called or not
     @Test
-    public void testClearMethodCallOrNot(){
+    public void testClearMethodCallOrNot() {
 
         mockCalculator.clear();
 
@@ -101,37 +100,37 @@ public class BasicUnitTest5 {
 
     // 2. Specific count of interactions
     @Test
-    public void testMethodCallCount(){
+    public void testMethodCallCount() {
 
         mockCalculator.clear();
         mockCalculator.clear();
         mockCalculator.clear();
 
-        verify(mockCalculator,times(3)).clear();
+        verify(mockCalculator, times(3)).clear();
     }
 
     // 3. no interactions
     @Test
-    public void testMethodNeverCall(){
+    public void testMethodNeverCall() {
 
 //        mockCalculator.clear();
 
-        verify(mockCalculator,never()).clear();
+        verify(mockCalculator, never()).clear();
     }
 
     // 4. Verify the order of mocked interactions
     @Test
-    public void testMethodOrderCall(){
+    public void testMethodOrderCall() {
 
         InOrder mockInvocationSequence = Mockito.inOrder(mockCalculator);
 
         mockCalculator.clear();
         mockCalculator.clearMemory();
-        mockCalculator.add(2,2);
+        mockCalculator.add(2, 2);
 
         mockInvocationSequence.verify(mockCalculator).clear();
         mockInvocationSequence.verify(mockCalculator).clearMemory();
-        mockInvocationSequence.verify(mockCalculator).add(anyInt(),anyInt());
+        mockInvocationSequence.verify(mockCalculator).add(anyInt(), anyInt());
 
     }
 

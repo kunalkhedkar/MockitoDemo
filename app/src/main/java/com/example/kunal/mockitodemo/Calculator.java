@@ -6,19 +6,19 @@ public class Calculator {
         return num1 + num2;
     }
 
-    public int div(int num1,int num2){
-        return num1/num2;
+    public int div(int num1, int num2) {
+        return num1 / num2;
     }
 
-    public void clear(){
+    public void clear() {
         clearMemory();
     }
 
-    public void clearMemory(){
+    public void clearMemory() {
         // clear memory
     }
 
     public int multi(Object num1, Object num2) {
-        return (((Integer)num1)*((Integer)num2));
+        return (((Integer) num1) * ((Integer) num2));
     }
 }
