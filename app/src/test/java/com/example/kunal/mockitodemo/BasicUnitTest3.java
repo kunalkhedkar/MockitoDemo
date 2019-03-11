@@ -15,6 +15,9 @@ public class BasicUnitTest3 {
     @Mock
     Rectangle mockRectangle;
 
+    @Mock
+    CarInterface carInterface;
+
     @Test
     public void testAreaMethod() {
 
@@ -25,8 +28,14 @@ public class BasicUnitTest3 {
         // want to test areaCalculator.area() method
         AreaCalculator areaCalculator = new AreaCalculator();
 
+
+        when(carInterface.drive()).thenReturn("120 kmps");
+
+        assertEquals(carInterface.drive(),"120 kmps");
+
+
         // assert
-        assertEquals(50, areaCalculator.area(mockRectangle));
+//        assertEquals(50, areaCalculator.area(mockRectangle));
 
     }
 }
